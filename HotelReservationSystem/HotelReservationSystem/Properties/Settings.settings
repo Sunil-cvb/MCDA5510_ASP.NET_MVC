@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HotelReservationSystem.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HotelReservationSystem_CreditCardService_CustomerWebServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://dev.cs.smu.ca:9080/Assignment3/services/CustomerWebService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
