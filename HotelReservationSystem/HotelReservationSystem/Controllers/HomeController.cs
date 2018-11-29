@@ -10,9 +10,6 @@ namespace HotelReservationSystem.Controllers
     {
         public ActionResult Index()
         {
-            CreditCardService.CustomerWebServiceService creditCardService = new CreditCardService.CustomerWebServiceService();
-            String cardDetails = creditCardService.getTransaction(1);
-            ViewBag.Message = cardDetails;
             return View();
         }
 
