@@ -54,6 +54,7 @@ namespace HotelReservationSystem.Controllers
             {
                 ViewBag.SuccessMessage = "Logged in";
                 ViewBag.triedOnce = "Yes";
+                ViewBag.userName = user.userName.ToString();
                 Session["userName"] = user.userName;
 
                 return RedirectToAction("Index","Home");
