@@ -29,5 +29,7 @@ namespace HotelReservationSystem.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HotelReservationSystem.Models.USER> USERs { get; set; }
     }
 }

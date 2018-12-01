@@ -8,8 +8,13 @@ namespace HotelReservationSystem.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string userName)
         {
+            if (Session["userName"] != null)
+            {
+                ViewBag.userName = Session["userName"].ToString();
+
+            }
             return View();
         }
 

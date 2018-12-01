@@ -1,9 +1,9 @@
-﻿using System;
+﻿using HotelReservationSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Controllers
 {
@@ -11,25 +11,60 @@ namespace HotelReservationSystem.Controllers
     {
         // GET: User
         [HttpGet]
-        public ActionResult Register(int id=0)
+        public ActionResult Register()
         {
-            USER userModel = new USER();
-            return View(userModel);
-        }
+            USER user = new USER();
 
+            return View(user);
+        }
         [HttpPost]
         public ActionResult Register(USER user)
         {
-            using (UserModels userModel = new UserModels())
+            using (UserModel userModel = new UserModel())
             {
+                if (userModel.USERs.Any(x =>x.userName == user.userName))
+                {
+                    ViewBag.DuplicateMessage = "User already Exists with given user name.";
+                    return View("Register", user);
+                }
                 userModel.USERs.Add(user);
                 userModel.SaveChanges();
-
             }
             ModelState.Clear();
             ViewBag.SuccessMessage = "New User Registration Complete.";
+            return View("Register", new USER());
+        }
 
-            return View("Register",new USER());
+        [HttpGet]
+        public ActionResult Login()
+        {
+            if (Session["userName"]!= null)
+            {
+                return RedirectToAction("Index", "home",new { userName = Session["userName"].ToString() });
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(USER user)
+        {
+            UserModel usrModel = new UserModel();
+            var validUser=usrModel.USERs.SingleOrDefault(x => x.userName == user.userName && x.password == user.password);
+            if (validUser != null)
+            {
+                ViewBag.SuccessMessage = "Logged in";
+                ViewBag.triedOnce = "Yes";
+                Session["userName"] = user.userName;
+
+                return RedirectToAction("Index","Home");
+            }
+            else
+            {
+                ViewBag.InvalidUserMessage = "Please check the user name or password and try again.";
+                ViewBag.triedOnce = "Yes";
+                return View("Login",user);
+            }
+           
         }
     }
 }
