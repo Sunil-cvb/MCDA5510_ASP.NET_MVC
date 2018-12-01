@@ -1,11 +1,11 @@
 USE [HotelReservationSystem]
 GO
 
-/****** Object:  Table [dbo].[USER]    Script Date: 11/29/2018 3:48:48 PM ******/
+/****** Object:  Table [dbo].[USER]    Script Date: 12/1/2018 2:17:19 PM ******/
 DROP TABLE [dbo].[USER]
 GO
 
-/****** Object:  Table [dbo].[USER]    Script Date: 11/29/2018 3:48:48 PM ******/
+/****** Object:  Table [dbo].[USER]    Script Date: 12/1/2018 2:17:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[USER](
-	[userID] [bigint] NOT NULL,
+	[userID] [bigint] IDENTITY(1,1) NOT NULL,
 	[userName] [varchar](50) NOT NULL,
 	[password] [varchar](50) NOT NULL,
 	[fName] [varchar](50) NOT NULL,
@@ -30,6 +30,9 @@ CREATE TABLE [dbo].[USER](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+
+
 
 
 USE [HotelReservationSystem]
