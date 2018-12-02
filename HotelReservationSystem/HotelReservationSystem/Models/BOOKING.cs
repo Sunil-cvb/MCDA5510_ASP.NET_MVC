@@ -35,6 +35,21 @@ namespace HotelReservationSystem.Models
                 this.adults = 1;
             } }
 
+        [DisplayName("Children")]
+        [DefaultValue(2)]
+        [NotMapped]
+        public int children
+        {
+            get
+            {
+                return 0;
+            }
+            set
+            {
+                this.children = 0;
+            }
+        }
+
 
         [Key]
         [Column(Order = 3)]
