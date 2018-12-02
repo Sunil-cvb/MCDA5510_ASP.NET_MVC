@@ -28,10 +28,13 @@ namespace HotelReservationSystem.Controllers
                 }
                 userModel.USERs.Add(user);
                 userModel.SaveChanges();
+                var newUser = userModel.USERs.SingleOrDefault(x => x.userName == user.userName && x.password == user.password);
+                Session["userName"] = newUser.userName;
+                Session["userId"] = newUser.userID;
             }
             ModelState.Clear();
             ViewBag.SuccessMessage = "New User Registration Complete.";
-            return View("Register", new USER());
+            return RedirectToAction("BookingHome", "Booking");
         }
 
         [HttpGet]
@@ -39,7 +42,7 @@ namespace HotelReservationSystem.Controllers
         {
             if (Session["userName"]!= null)
             {
-                return RedirectToAction("BookingHome", "Booking", new { userName = Session["userName"].ToString() });
+                return RedirectToAction("BookingHome", "Booking");
             }
             return View();
         }

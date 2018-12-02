@@ -20,5 +20,14 @@ namespace HotelReservationSystem.Controllers
             BOOKING booking = new BOOKING();
             return View(booking);
         }
+
+        public ActionResult BookNow(BOOKING bookingDetails)
+        {
+            if (Session["userId"]!=null && Session["userName"]!=null){
+
+            }
+
+                return View();
+        }
     }
 }
