@@ -1,4 +1,4 @@
-USE [HotelReservationSystem]
+USE [HotelRsvp]
 GO
 
 /****** Object:  Table [dbo].[USER]    Script Date: 12/1/2018 2:17:19 PM ******/
@@ -32,10 +32,14 @@ CREATE TABLE [dbo].[USER](
 GO
 
 
+<<<<<<< HEAD
 
 
 
 USE [HotelReservationSystem]
+=======
+USE [HotelRsvp]
+>>>>>>> 97ea90e1ab2907e0410a958db828d5a98d305a53
 GO
 
 /****** Object:  Table [dbo].[ROOM]    Script Date: 11/29/2018 3:48:41 PM ******/
