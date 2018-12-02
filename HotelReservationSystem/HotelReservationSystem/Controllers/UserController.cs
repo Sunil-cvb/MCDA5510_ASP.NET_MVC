@@ -31,6 +31,10 @@ namespace HotelReservationSystem.Controllers
                 var newUser = userModel.USERs.SingleOrDefault(x => x.userName == user.userName && x.password == user.password);
                 Session["userName"] = newUser.userName;
                 Session["userId"] = newUser.userID;
+                if (Session["fromDae"] != null && Session["toDate"] != null && Session["adults"] != null)
+                {
+                    return RedirectToAction("Paynow", "Payment");
+                }
             }
             ModelState.Clear();
             ViewBag.SuccessMessage = "New User Registration Complete.";
@@ -59,7 +63,10 @@ namespace HotelReservationSystem.Controllers
                 ViewBag.userName = user.userName.ToString();
                 Session["userName"] = user.userName;
                 Session["userId"] = validUser.userID;
-
+                if (Session["fromDae"]!=null && Session["toDate"] != null && Session["adults"] != null)
+                {
+                    return RedirectToAction("Paynow", "Payment");
+                }
                 return RedirectToAction("BookingHome", "Booking");
             }
             else
