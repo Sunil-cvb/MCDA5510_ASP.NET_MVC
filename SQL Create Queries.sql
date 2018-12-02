@@ -88,4 +88,73 @@ CREATE TABLE [dbo].[BOOKING](
 ) ON [PRIMARY]
 GO
 
+USE [HotelReservationSystem]
+GO
 
+INSERT INTO [dbo].[ROOM]
+           ([roomName]
+           ,[roomNum]
+           ,[roomType]
+           ,[price(in CAD)])
+     VALUES
+           ('Apple'
+           ,101
+           ,'Single'
+           ,90),
+		   ('Banana'
+           ,102
+           ,'Double'
+           ,120),
+		   ('Cherry'
+           ,103
+           ,'Triple'
+           ,130),
+		   ('Damson'
+           ,104
+           ,'Quad'
+           ,150),
+		   ('Elderberry'
+           ,105
+           ,'Queen'
+           ,140),
+		   ('Fig'
+           ,201
+           ,'King'
+           ,160),
+		   ('Grape'
+           ,202
+           ,'Twin'
+           ,110),
+		   ('Hackberry'
+           ,203
+           ,'Twin'
+           ,110),
+		   ('Indian Prune'
+           ,204
+           ,'Single'
+           ,90),
+		   ('Jambolan'
+           ,205
+           ,'Single'
+           ,90),
+		   ('Kiwi'
+           ,301
+           ,'Master Suite'
+           ,290),
+		   ('Lime'
+           ,302
+           ,'Queen'
+           ,140),
+		   ('Mango'
+           ,303
+           ,'King'
+           ,160),
+		   ('Nectarine'
+           ,304
+           ,'Double'
+           ,125),
+		   ('Orange'
+           ,305
+           ,'Triple'
+           ,135)
+GO
