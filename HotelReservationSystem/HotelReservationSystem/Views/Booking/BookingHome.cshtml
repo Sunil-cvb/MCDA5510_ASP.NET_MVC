@@ -1,5 +1,4 @@
 ﻿@model HotelReservationSystem.Models.BOOKING
-
 @{
     ViewBag.Title = "Booking Home";
 }
@@ -8,45 +7,47 @@
     <h2>Hotel Reservation System</h2>
     <p class="lead">We provide the high quality service and comfort through out your stay. Enjoy your time with us.</p>
 </div>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="col-md-24">
-   
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="row jumbotron col-md-24">
-        <div class="col-md-3">
-            @Html.LabelFor(model => model.fromDate, htmlAttributes: new { @class = "col-md-3" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.fromDate, new { htmlAttributes = new { @class = "datepicker" } })
-                @Html.ValidationMessageFor(model => model.fromDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="col-md-24">
 
-        <div class="col-md-4">
-            @Html.LabelFor(model => model.toDate, htmlAttributes: new { @class = "col-md-2" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row jumbotron col-md-24">
             <div class="col-md-3">
-                @Html.EditorFor(model => model.toDate, new { htmlAttributes = new { @class = "datepicker" } })
-                @Html.ValidationMessageFor(model => model.toDate, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.fromDate, htmlAttributes: new { @class = "col-2 col-form-label" })
+                <div class="col-10">
+                    @Html.EditorFor(model => model.fromDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.fromDate, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            @Html.LabelFor(model => model.adults, htmlAttributes: new { @class = "col-md-4" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.adults, new { htmlAttributes = new { @class = "col-md-9" },@type="number",@Value="1" })
-                @Html.ValidationMessageFor(model => model.adults, "", new { @class = "text-danger" })
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.toDate, htmlAttributes: new { @class = "col-2 col-form-label" })
+                <div class="col-10">
+                    @Html.EditorFor(model => model.toDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.toDate, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="col-md-6"   >
-                <input type="submit" value="Get Rooms" class="btn active" />
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.adults, htmlAttributes: new { @class = "col-2 col-form-label" })
+                <div class="col-10">
+                    @Html.EditorFor(model => model.adults, new { htmlAttributes = new { @class = "form-control" }, @type = "number", @Value = "1" })
+                    @Html.ValidationMessageFor(model => model.adults, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.children, htmlAttributes: new { @class = "col-2 col-form-label" })
+                <div class="col-10">
+                    @Html.EditorFor(model => model.children, new { htmlAttributes = new { @class = "form-control" }, @type = "number", @Value = "1" })
+                    @Html.ValidationMessageFor(model => model.children, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 25px">Search Rooms</button>
             </div>
         </div>
     </div>
- </div>
     <div class="row">
         <div class="col-md-4">
             <h2>Manage your booking</h2>
@@ -69,26 +70,24 @@
         </div>
     </div>
 
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-
-    @section Scripts {
-        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-        <script>
-            $(function () {
-                $(".datepicker").datepicker({
-                    dateFormat: "dd-mm-yy",
-                    changeMonth: true,
-                    yearRange: "-5:+5",
-                    changeYear: true,
-                    //showOn:"both",
-                    //buttonText: "<i class='fa fa-calendar'></i>"
-                });
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                yearRange: "-5:+5",
+                changeYear: true,
+                //showOn:"both",
+                //buttonText: "<i class='fa fa-calendar'></i>"
             });
+        });
 
-        </script>
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
