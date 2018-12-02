@@ -39,7 +39,7 @@ namespace HotelReservationSystem.Controllers
         {
             if (Session["userName"]!= null)
             {
-                return RedirectToAction("Index", "home",new { userName = Session["userName"].ToString() });
+                return RedirectToAction("BookingHome", "Booking", new { userName = Session["userName"].ToString() });
             }
             return View();
         }
@@ -57,7 +57,7 @@ namespace HotelReservationSystem.Controllers
                 Session["userName"] = user.userName;
                 Session["userId"] = validUser.userID;
 
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("BookingHome", "Booking");
             }
             else
             {
@@ -73,7 +73,7 @@ namespace HotelReservationSystem.Controllers
         {
             Session.Abandon();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("BookingHome", "Booking");
         }
     }
 }
