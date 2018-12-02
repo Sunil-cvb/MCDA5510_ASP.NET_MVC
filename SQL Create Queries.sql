@@ -50,7 +50,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[ROOM](
-	[roomID] [int] NOT NULL,
+	[roomID] [int] IDENTITY(1,1) NOT NULL,
 	[roomName] [varchar](50) NOT NULL,
 	[roomNum] [int] NOT NULL,
 	[roomType] [varchar](50) NOT NULL,
@@ -79,7 +79,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[BOOKING](
-	[bookingID] [bigint] NOT NULL,
+	[bookingID] [bigint] IDENTITY(1,1) NOT NULL,
 	[fromDate] [datetime] NOT NULL,
 	[toDate] [datetime] NOT NULL,
 	[bookedTime] [datetime] NOT NULL,
