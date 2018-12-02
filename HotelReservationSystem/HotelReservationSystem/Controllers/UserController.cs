@@ -14,7 +14,6 @@ namespace HotelReservationSystem.Controllers
         public ActionResult Register()
         {
             USER user = new USER();
-
             return View(user);
         }
         [HttpPost]
@@ -56,6 +55,7 @@ namespace HotelReservationSystem.Controllers
                 ViewBag.triedOnce = "Yes";
                 ViewBag.userName = user.userName.ToString();
                 Session["userName"] = user.userName;
+                Session["userId"] = validUser.userID;
 
                 return RedirectToAction("Index","Home");
             }
@@ -66,6 +66,14 @@ namespace HotelReservationSystem.Controllers
                 return View("Login",user);
             }
            
+        }
+
+        
+        public ActionResult LogOff()
+        {
+            Session.Abandon();
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
