@@ -63,7 +63,7 @@ namespace HotelReservationSystem.Controllers
                 ViewBag.userName = user.userName.ToString();
                 Session["userName"] = user.userName;
                 Session["userId"] = validUser.userID;
-                if (Session["fromDae"]!=null && Session["toDate"] != null && Session["adults"] != null)
+                if (Session["fromDate"]!=null && Session["toDate"] != null && Session["adults"] != null)
                 {
                     return RedirectToAction("Paynow", "Payment");
                 }
