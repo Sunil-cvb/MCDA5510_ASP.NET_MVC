@@ -30,8 +30,8 @@ namespace HotelReservationSystem.Models
         public string roomType { get; set; }
 
         [Key]
-        [Column("price(in CAD)", Order = 4)]
+        [Column(Order = 4)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int price_in_CAD_ { get; set; }
+        public int priceInCAD { get; set; }
     }
 }
