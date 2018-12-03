@@ -3,14 +3,15 @@
     ViewBag.Title = "Booking Home";
 }
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-<div class="jumbotron">
-    <h2>Hotel Reservation System</h2>
+<div class="hero">
+    <h1>The Royal Palace Hotel</h1>
     <p class="lead">We provide the high quality service and comfort through out your stay. Enjoy your time with us.</p>
 </div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <style>
+    </style>
     <div class="col-md-24">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -49,7 +50,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Manage your booking</h2>
             <p>
                 ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
@@ -58,15 +59,10 @@
             </p>
             <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Finger tip Services</h2>
             <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
             <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>We Care for you</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
         </div>
     </div>
 
