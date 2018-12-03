@@ -156,5 +156,9 @@ INSERT INTO [dbo].[ROOM]
 		   ('Orange'
            ,305
            ,'Triple'
-           ,135)
+           ,135),
+		   ('Papaya'
+           ,401
+           ,'Double'
+           ,100)
 GO
