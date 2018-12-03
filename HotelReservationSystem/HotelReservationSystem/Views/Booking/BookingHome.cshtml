@@ -1,18 +1,19 @@
-﻿@model HotelReservationSystem.Models.BOOKING
+@model HotelReservationSystem.Models.BOOKING
 @{
     /**/
 
     ViewBag.Title = "Booking Home";
 }
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-<div class="jumbotron">
-    <h2>Hotel Reservation System</h2>
+<div class="hero">
+    <h1>The Royal Palace Hotel</h1>
     <p class="lead">We provide the high quality service and comfort through out your stay. Enjoy your time with us.</p>
 </div>
 @using (Html.BeginForm("SearchRooms", "Booking", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    <style>
+    </style>
     <div class="col-md-24">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
