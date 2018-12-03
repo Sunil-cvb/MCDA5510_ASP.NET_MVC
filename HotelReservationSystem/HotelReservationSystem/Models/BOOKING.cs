@@ -32,7 +32,7 @@ namespace HotelReservationSystem.Models
         public int adults { get {
                 return 1;
             } set {
-                this.adults = 1;
+                
             } }
 
         [DisplayName("Children")]
@@ -46,7 +46,7 @@ namespace HotelReservationSystem.Models
             }
             set
             {
-                this.children = 0;
+                
             }
         }
 

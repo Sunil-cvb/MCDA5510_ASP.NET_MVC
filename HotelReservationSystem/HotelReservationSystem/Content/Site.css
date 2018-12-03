@@ -22,3 +22,27 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.hero {
+    background: url(/assets/img/hotel.jpg) no-repeat center center fixed;
+    padding: 200px 150px;
+    background-size: cover;
+    text-align: center;
+}
+
+    .hero h1 {
+        font-weight: 400;
+        font-size: 8rem;
+        color: #ffffff;
+        font-family: 'Abril Fatface', cursive;
+    }
+
+    .hero p {
+        font-size: 3rem;
+        color: #ffffff;
+        font-family: 'Neuton', serif;
+    }
+
+.navbar-header a {
+    font-family: 'Abril Fatface', cursive;
+}

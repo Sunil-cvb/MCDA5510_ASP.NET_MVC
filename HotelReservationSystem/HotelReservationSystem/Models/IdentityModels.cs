@@ -33,5 +33,7 @@ namespace HotelReservationSystem.Models
         public System.Data.Entity.DbSet<HotelReservationSystem.Models.USER> USERs { get; set; }
 
         public System.Data.Entity.DbSet<HotelReservationSystem.Models.BOOKING> BOOKINGs { get; set; }
+
+        public System.Data.Entity.DbSet<HotelReservationSystem.Models.ROOM> ROOMs { get; set; }
     }
 }

@@ -1,16 +1,19 @@
-﻿@model HotelReservationSystem.Models.BOOKING
+@model HotelReservationSystem.Models.BOOKING
 @{
+    /**/
+
     ViewBag.Title = "Booking Home";
 }
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-<div class="jumbotron">
-    <h2>Hotel Reservation System</h2>
+<div class="hero">
+    <h1>The Royal Palace Hotel</h1>
     <p class="lead">We provide the high quality service and comfort through out your stay. Enjoy your time with us.</p>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm("SearchRooms", "Booking", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    <style>
+    </style>
     <div class="col-md-24">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -48,29 +51,61 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Manage your booking</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Finger tip Services</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>We Care for you</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
-    </div>
-
 }
+@if (ViewBag.RoomList != null)
+{
+    foreach (var room in ViewBag.RoomList)
+    {
+        using (Html.BeginForm("BookNow", "Booking", FormMethod.Post))
+        {
+                <div class="row col-md-24">
+                    <div class="col-md-3" name="roomName">
+                        <Label value="@room.roomName">@room.roomName</Label>
+                        <input type="hidden" name="roomId" value="@room.roomID"/>
+                        <hr />
+                    </div>
+                    <div class="col-md-3" name="roomType">
+                        <Label value="@room.roomType">@room.roomType</Label>
+                        <hr />
+                    </div>
+                    <div class="col-md-3">
+                        <Label value="@room.priceInCAD">@room.priceInCAD</Label>
+                        <hr />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" value="Book Now" />
+                        <hr />
+                    </div>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Manage your booking</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                    enables a clean separation of concerns and gives you full control over markup
+                    for enjoyable, agile development.
+                </p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Finger tip Services</h2>
+                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>We Care for you</h2>
+                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+            </div>
+        </div>
+    }
+
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
