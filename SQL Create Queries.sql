@@ -54,7 +54,7 @@ CREATE TABLE [dbo].[ROOM](
 	[roomName] [varchar](50) NOT NULL,
 	[roomNum] [int] NOT NULL,
 	[roomType] [varchar](50) NOT NULL,
-	[price(in CAD)] [int] NOT NULL,
+	[priceInCAD] [int] NOT NULL,
 	[roomURL] [varchar](128)
 ) ON [PRIMARY]
 GO
@@ -96,8 +96,8 @@ INSERT INTO [dbo].[ROOM]
            ([roomName]
            ,[roomNum]
            ,[roomType]
-           ,[price(in CAD)])
-		   ,[roomURL]
+           ,[priceInCAD]
+		   ,[roomURL])
      VALUES
            ('DELUXE'
            ,101
