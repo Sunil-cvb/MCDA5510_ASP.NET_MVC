@@ -14,6 +14,7 @@ namespace HotelReservationSystem.Controllers
         public ActionResult Paynow()
         {
             int userID = 0;
+            string essionName= Session["userName"].ToString();
             ViewBag.userName=Session["userName"].ToString();
             if (Session["userId"] != null)
             {
