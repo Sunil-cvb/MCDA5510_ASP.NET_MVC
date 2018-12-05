@@ -20,36 +20,36 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <h1 style="font-family: 'Abril Fatface', cursive; padding-top: 10px">Pay Now</h1>
             <h3 style="font-family: 'Neuton', serif; padding-bottom: 20px;">Please proceed with your booking</h3>
+            <div>
                 <div>
-                    <div>
-                        <label><b>Name On Card:</b></label>
-                        <label>@ViewBag.NameOnCard</label>
+                    <label><b>Name On Card:</b></label>
+                    <label>@ViewBag.NameOnCard</label>
 
-                    </div>
-                    <br />
-                    <div>
-                        <label><b>Card Type:</b></label>
-                        <label>@ViewBag.cardType</label>
-                    </div>
-                    <br />
-                    <div>
-                        <label><b>Card Number:</b></label>
-                        <label>@ViewBag.CardNumber</label>
-                    </div>
-                    <br />
-                    <div>
-                        <label><b>Expiry Date:</b></label>
-                        <label>@ViewBag.ExpiryDate</label>
-                    </div>
-                    <br />
-                    <div>
-                        <label><b>Card added on:</b></label>
-                        <label>@ViewBag.CardCreationDate</label>
-                    </div>
-                    <div style="padding: 20px 0px">
-                        <input type="submit" value="Pay Now" class="btn btn-primary" style="width: 100%" />
-                    </div>
                 </div>
+                <br />
+                <div>
+                    <label><b>Card Type:</b></label>
+                    <label>@ViewBag.cardType</label>
+                </div>
+                <br />
+                <div>
+                    <label><b>Card Number:</b></label>
+                    <label>@ViewBag.CardNumber</label>
+                </div>
+                <br />
+                <div>
+                    <label><b>Expiry Date:</b></label>
+                    <label>@ViewBag.ExpiryDate</label>
+                </div>
+                <br />
+                <div>
+                    <label><b>Card added on:</b></label>
+                    <label>@ViewBag.CardCreationDate</label>
+                </div>
+                <div style="padding: 20px 0px">
+                    <input type="submit" value="Pay Now" class="btn btn-primary" style="width: 100%" />
+                </div>
+            </div>
         }
         using (Html.BeginForm("DeleteCard", "Payment", FormMethod.Post))
         {
@@ -63,6 +63,7 @@
 
     }
 </div>
+<div class="row jumbotron">
     @if (ViewBag.ExistingCustomer == "false")
     {
         using (Html.BeginForm("AddCard", "Payment", FormMethod.Post))
@@ -71,32 +72,35 @@
 
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <h2>Confirm your Booking</h2>
-            <div class="row jumbotron">
-                <Label class="media-heading">You do not have any cards associated with the account. Kindly Add a New Card to complete the Booking.</Label>
-                <div class="form-group">
-                    <label value="Name on Card">Name on Card     :</label>
-                    <input name="nameOnCard" type="text" placeholder="Full Name" />
-                </div>
-                <div class="form-group">
-                    <label value="Card Number">Card Number   :</label>
-                    <input id="cardNumber" name="cardNumber" class="cardNumber" onchange="setCardType()" type="text" placeholder="Card Number" />
-                </div>
-                <div class="form-group">
-                    <label value="Card Type">Card Type /t:</label>
-                    <input id="cardType" type="text" disabled />
-                </div>
-                <div class="form-group">
-                    <label value="Expiry Date">Expiry Date   :</label>
-                    <input name="expDate" type="text" placeholder="MM/YYYY" />
-                </div>
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Add Card" class="btn btn-primary" style="width: 100%" />
-                </div>
+            <h1 style="font-family: 'Abril Fatface', cursive; padding-top: 10px">Pay Now</h1>
+            <h3 style="font-family: 'Neuton', serif; padding-bottom: 20px;">You do not have any cards associated with the account. Kindly Add a New Card to complete the Booking</h3>
+
+
+            <div class="form-group">
+                <label value="Name on Card" for="nameOnCard"><b>Name on Card:</b></label>
+                <input name="nameOnCard" type="text" placeholder="Full Name" class="form-control" id="nameOnCard" />
+            </div>
+            <div class="form-group">
+                <label value="Card Number" for="cardNumber"><b>Card Number:</b></label>
+                <input id="cardNumber" name="cardNumber" class="cardNumber form-control" onchange="setCardType()" type="text" placeholder="Card Number" />
+            </div>
+            <div class="form-group">
+                <label value="Card Type"><b>Card Type:</b></label>
+                <br />
+                <label id="cardType">-</label>
+            </div>
+            <div class="form-group">
+                <label value="Expiry Date"><b>Expiry Date:</b></label>
+                <input name="expDate" type="text" class="form-control" placeholder="MM/YYYY" />
+            </div>
+            <div style="padding-top: 20px">
+                <input type="submit" value="Add Card" class="btn btn-primary" style="width: 100%" />
             </div>
 
         }
+
     }
+</div>
     @if (ViewBag.PaymentStatus == "Success")
     {
         <h2>@ViewBag.PaymentInfo</h2>
@@ -124,11 +128,11 @@
                 var cardNumber = document.getElementById("cardNumber").value;
                 if ((cardNumber.substring(0, 2) == '51' || cardNumber.substring(0, 2) == '52'
                     || cardNumber.substring(0, 2) == '53' || cardNumber.substring(0, 2) == '54' || cardNumber.substring(0, 2) == '55') && cardNumber.length == 16) {
-                    document.getElementById("cardType").value = "Master Card";
+                    document.getElementById("cardType").innerText = "Master Card";
                 } else if ((cardNumber.substring(0, 2) == '34' || cardNumber.substring(0, 2) == '37') && cardNumber.length == 15) {
-                    document.getElementById("cardType").value = "American Express";
+                    document.getElementById("cardType").innerText = "American Express";
                 } else if ((cardNumber.substring(0, 1) == '4') && cardNumber.length == 16) {
-                    document.getElementById("cardType").value = "Visa";
+                    document.getElementById("cardType").innerText = "Visa";
 
                 }
 
