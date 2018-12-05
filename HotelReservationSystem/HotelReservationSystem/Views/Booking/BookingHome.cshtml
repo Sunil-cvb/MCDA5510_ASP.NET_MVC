@@ -58,23 +58,26 @@
     {
         using (Html.BeginForm("BookNow", "Booking", FormMethod.Post))
         {
-                <div class="row col-md-24">
-                    <div class="col-md-3" name="roomName">
+                <div class="row col-24" style="padding: 50px">
+                    <div class="col-md-4">
+                        <img src="@room.roomURL" width="50%" />
+                    </div>
+                    <div class="col-md-2" name="roomName" style="padding-top: 10px">
                         <Label value="@room.roomName">@room.roomName</Label>
                         <input type="hidden" name="roomId" value="@room.roomID"/>
-                        <hr />
+         
                     </div>
-                    <div class="col-md-3" name="roomType">
+                    <div class="col-md-2" name="roomType" style="padding-top: 10px">
                         <Label value="@room.roomType">@room.roomType</Label>
-                        <hr />
+               
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1" style="padding-top: 10px">
                         <Label value="@room.priceInCAD">@room.priceInCAD</Label>
-                        <hr />
+                     
                     </div>
                     <div class="col-md-3">
-                        <input type="submit" value="Book Now" />
-                        <hr />
+                        <input type="submit" value="Book Now" class="btn btn-primary"/>
+                
                     </div>
                 </div>
             }
