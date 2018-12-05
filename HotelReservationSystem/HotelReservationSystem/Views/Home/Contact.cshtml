@@ -1,17 +1,35 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h1 style="font-family: 'Abril Fatface', cursive; padding-top: 10px">Contact Us</h1>
+<h3 style="font-family: 'Neuton', serif; padding-bottom: 20px">For your inquiries</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<form class="container">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="First Last" />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="5"></textarea>
+    </div>
+
+<button class="btn btn-primary" id="btn" >Send</button>
+    </form>
+
+<div id="alert" style="padding:20px 10px;">
+
+</div>
+
+@section Scripts {
+    <script>
+        $("#btn").click(function () {
+            $("#alert").append("Your message has been sent");
+        });
+    </script>
+}
