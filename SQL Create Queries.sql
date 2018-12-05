@@ -181,4 +181,29 @@ INSERT INTO [dbo].[ROOM]
 		   'https://firebasestorage.googleapis.com/v0/b/mcda-hotel.appspot.com/o/hotel-rooms%2FHotel-Room%20(24).jpg?alt=media&token=71e24001-e87f-4d0f-baf2-daeb425bf204')
 GO
 
+USE [HotelReservationSystem]
+GO
 
+/****** Object:  Table [dbo].[USERBANK]    Script Date: 12/4/2018 7:46:15 PM ******/
+DROP TABLE [dbo].[USERBANK]
+GO
+
+/****** Object:  Table [dbo].[USERBANK]    Script Date: 12/4/2018 7:46:15 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[USERBANK](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NOT NULL,
+	[cardNumber] [varchar](45) NOT NULL,
+	[amount] [decimal](10, 2) NOT NULL,
+	[FK_UID] [int] NOT NULL,
+ CONSTRAINT [PK_USERBANK] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
