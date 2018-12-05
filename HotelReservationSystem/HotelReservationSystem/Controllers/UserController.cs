@@ -31,7 +31,7 @@ namespace HotelReservationSystem.Controllers
                 var newUser = userModel.USERs.SingleOrDefault(x => x.userName == user.userName && x.password == user.password);
                 Session["userName"] = newUser.userName;
                 Session["userId"] = newUser.userID;
-                if (Session["fromDae"] != null && Session["toDate"] != null && Session["adults"] != null)
+                if (Session["fromDate"] != null && Session["toDate"] != null && Session["adults"] != null)
                 {
                     return RedirectToAction("Paynow", "Payment");
                 }

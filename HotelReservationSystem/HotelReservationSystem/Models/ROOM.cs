@@ -33,5 +33,11 @@ namespace HotelReservationSystem.Models
         [Column(Order = 4)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int priceInCAD { get; set; }
+
+        [Key]
+        [Column(Order = 5)]
+        [StringLength(128)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string roomURL { get; set; }
     }
 }
