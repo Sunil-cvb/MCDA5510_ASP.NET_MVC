@@ -3,7 +3,135 @@
     ViewBag.Title = "Paynow";
 }
 
-<h2>Paynow</h2>
 
-<h4>Payment informaton will be here. </h4>
+@if (ViewBag.ExistingCustomer == "true")
+{
+    <label class="danger">@ViewBag.DeleteStatus</label>
+    using (Html.BeginForm("Paynow", "Payment", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h2>Confirm your Booking</h2>
+        <div class="jumbotron col-md-19">
+            <div>
+                <Label>Existing Customer:</Label>
+                <div>
+                    <label>Name On Card : </label>
+                    <input type="text" name="nameOnCard" value="@ViewBag.NameOnCard" disabled>
+                </div>
+                <br />
+                <div>
+                    <label>Card Type : </label>
+                    <input type="text" name="cardNumber" value="@ViewBag.cardType" disabled>
+                </div>
+                <br />
+
+                <div>
+                    <label>Card Number : </label>
+                    <input type="text" name="cardNumber" value="@ViewBag.CardNumber" disabled>
+                </div>
+                <br />
+                <div>
+                    <label>Expiry Date : </label>
+                    <input type="text" name="expDate" value="@ViewBag.ExpiryDate" disabled>
+                </div>
+                <br />
+                <div>
+                    <label>Card Added on : </label>
+                    <input type="text" name="cardCreationDate" value="@ViewBag.CardCreationDate" disabled>
+
+                </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Pay Now" class="btn btn-primary" style="width: 100%" />
+                </div>
+            </div>
+        </div>
+    }
+    using (Html.BeginForm("DeleteCard", "Payment", FormMethod.Post))
+    {
+        <div class="jumbotron col-md-19">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" name="userId" value="@ViewBag.userID" />
+                <input type="submit" value="Delete Card" class="btn btn-primary" style="width: 100%" />
+            </div>
+        </div>
+    }
+
+}
+@if (ViewBag.ExistingCustomer == "false")
+{
+    using (Html.BeginForm("AddCard", "Payment", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h2>Confirm your Booking</h2>
+        <div class="row jumbotron">
+            <Label class="media-heading">You do not have any cards associated with the account. Kindly Add a New Card to complete the Booking.</Label>
+            <div class="form-group">
+                <label value="Name on Card">Name on Card     :</label>
+                <input name="nameOnCard" type="text" placeholder="Full Name" />
+            </div>
+            <div class="form-group">
+                <label value="Card Number">Card Number   :</label>
+                <input id="cardNumber" name="cardNumber" class="cardNumber" onchange="setCardType()" type="text" placeholder="Card Number" />
+            </div>
+            <div class="form-group">
+                <label value="Card Type">Card Type /t:</label>
+                <input id="cardType" type="text" disabled />
+            </div>
+            <div class="form-group">
+                <label value="Expiry Date">Expiry Date   :</label>
+                <input name="expDate" type="text" placeholder="MM/YYYY" />
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Card" class="btn btn-primary" style="width: 100%" />
+            </div>
+        </div>
+
+    }
+}
+@if (ViewBag.PaymentStatus == "Success")
+{
+    <h2>@ViewBag.PaymentInfo</h2>
+}
+@if (ViewBag.PaymentStatus == "Failure")
+{
+    <h2>@ViewBag.PaymentInfo</h2>
+}
+
+@ViewBag.CreateMsg
+
+@section Scripts {
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                yearRange: "-5:+5",
+                changeYear: true,
+                //showOn:"both",
+                //buttonText: "<i class='fa fa-calendar'></i>"
+            });
+        });
+        function setCardType() {
+            var cardNumber = document.getElementById("cardNumber").value;
+            if ((cardNumber.substring(0, 2) == '51' || cardNumber.substring(0, 2) == '52'
+                || cardNumber.substring(0, 2) == '53' || cardNumber.substring(0, 2) == '54' || cardNumber.substring(0, 2) == '55') && cardNumber.length == 16) {
+                document.getElementById("cardType").value = "Master Card";
+            } else if ((cardNumber.substring(0, 2) == '34' || cardNumber.substring(0, 2) == '37') && cardNumber.length == 15) {
+                document.getElementById("cardType").value = "American Express";
+            } else if ((cardNumber.substring(0, 1) == '4') && cardNumber.length == 16) {
+                document.getElementById("cardType").value = "Visa";
+
+            }
+
+        }
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -10,10 +10,7 @@ namespace HotelReservationSystem.Models
     [Table("BOOKING")]
     public partial class BOOKING
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long bookingID { get; set; }
+        
 
         [Key]
         [Column(Order = 1)]
@@ -64,5 +61,8 @@ namespace HotelReservationSystem.Models
         [Column(Order = 5)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int FK_RID { get; set; }
+
+        [NotMapped]
+        public int priceInCAD { get; set; }
     }
 }

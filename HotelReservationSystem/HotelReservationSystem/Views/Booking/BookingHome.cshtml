@@ -72,8 +72,10 @@
                
                     </div>
                     <div class="col-md-1" style="padding-top: 10px">
-                        <Label value="@room.priceInCAD">@room.priceInCAD</Label>
-                     
+                        <Label value="@room.priceInCAD">@room.priceInCAD</Label>            
+                        <input type="hidden" name="roomPrice" value="@room.priceInCAD" />
+                        <hr />
+
                     </div>
                     <div class="col-md-3">
                         <input type="submit" value="Book Now" class="btn btn-primary"/>

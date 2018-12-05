@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "ManageBooking";
+}
+
+<h2>My Booking History</h2>
+<div class="jumbotron">
+    @if (ViewBag.UserTransactions != null)
+    {
+        <div class="row col-md-24">
+            <div class="col-md-3">
+                <Label>Booking Start Date</Label>
+                <hr />
+            </div>
+            <div class="col-md-3">
+                <Label>Booking End Date</Label>
+                <hr />
+            </div>
+            <div class="col-md-3">
+                <Label>Booked On</Label>
+                <hr />
+            </div>
+            <div class="col-md-3">
+                <Label>Booking Amount</Label>
+                <hr />
+            </div>
+        </div>
+        foreach (var booking in ViewBag.UserTransactions)
+        {
+            <div class="row col-md-24">
+                <div class="col-md-3">
+                    <Label>@booking.fromDate</Label>
+                    <hr />
+                </div>
+                <div class="col-md-3">
+                    <Label>@booking.toDate</Label>
+                    <hr />
+                </div>
+                <div class="col-md-3">
+                    <Label>@booking.bookedTime</Label>
+                    <hr />
+                </div>
+                <div class="col-md-3">
+                    <Label>@booking.priceInCAD (CAD)</Label>
+                    <hr />
+                </div>
+
+            </div>
+
+        }
+
+    }
+</div>

@@ -36,6 +36,8 @@ namespace HotelReservationSystem.Models
 
         [Key]
         [Column(Order = 5)]
+        [StringLength(128)]
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string roomURL { get; set; }
     }
