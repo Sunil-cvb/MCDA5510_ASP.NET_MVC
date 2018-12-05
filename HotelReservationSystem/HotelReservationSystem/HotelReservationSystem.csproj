@@ -334,6 +334,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Booking\BookingHome.cshtml" />
     <Content Include="Views\Payment\Paynow.cshtml" />
+    <Content Include="Views\Booking\ManageBooking.cshtml" />
     <None Include="Web References\JavaWebService\CustomerWebService.wsdl" />
     <Content Include="Web References\JavaWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

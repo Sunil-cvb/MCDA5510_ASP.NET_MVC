@@ -63,6 +63,7 @@ namespace HotelReservationSystem.Controllers
 
 
             ViewBag.userName = Session["userName"].ToString();
+            ViewBag.userID = userID;
 
             return View();
         }
@@ -97,6 +98,11 @@ namespace HotelReservationSystem.Controllers
                 ViewBag.PaymentStatus = "Success";
                 ViewBag.PaymentInfo = "Thank you for using our services. Enjoy your stay.";
             }
+            else
+            {
+                ViewBag.PaymentStatus = "Failure";
+                ViewBag.PaymentInfo = "Insufficient Funds in your Account. PLease try later.";
+            }
             ViewBag.userName = Session["userName"].ToString();
             Session.Remove("toDate");
             Session.Remove("fromDate");
@@ -105,6 +111,42 @@ namespace HotelReservationSystem.Controllers
             Session.Remove("roomId");
             Session.Remove("roomPrice");
             return View();
+        }
+
+
+        public ActionResult DeleteCard(FormCollection form)
+        {
+            int userId = 0;
+            if (Session["userId"].ToString() == form["userId"].ToString())
+            {
+                userId = Convert.ToInt32(Session["userId"].ToString());
+            }
+            JavaWebService.CustomerWebServiceService javaWebService = new JavaWebService.CustomerWebServiceService();
+            string result=javaWebService.deleteTransaction(userId);
+            if(result != null)
+            {
+                ViewBag.DeleteStatus = "Delete Failed";
+            }
+            return View("Paynow");
+        }
+
+        public ActionResult AddCard(FormCollection form)
+        {
+            int userId = 0;
+            if (Session["userId"].ToString() !=null)
+            {
+                userId = Convert.ToInt32(Session["userId"].ToString());
+            }
+            string nameOnCard = form["nameOnCard"].ToString();
+            string cardNumber = form["cardNumber"].ToString();
+            string expDate = form["expDate"].ToString();
+            JavaWebService.CustomerWebServiceService javaWebService = new JavaWebService.CustomerWebServiceService();
+            string createMsg=javaWebService.createTranscation(userId, nameOnCard, cardNumber, 1.00, 1, expDate);
+            
+                ViewBag.CreateMsg = createMsg;
+            
+
+            return View("Paynow","Payment");
         }
     }
 }

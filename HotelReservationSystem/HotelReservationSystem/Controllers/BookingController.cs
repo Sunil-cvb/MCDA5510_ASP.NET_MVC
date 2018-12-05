@@ -41,6 +41,7 @@ namespace HotelReservationSystem.Controllers
         {
             Session["roomId"] = form["roomId"];
             Session["roomPrice"] = form["roomPrice"];
+            string roomPrice = Session["roomPrice"].ToString();
             if (Session["userId"] == null) {
                 return RedirectToAction("Login", "User");
             }
@@ -51,6 +52,34 @@ namespace HotelReservationSystem.Controllers
             //string userId = Session["userId"].ToString();
             //string roomId=Session["roomID"].ToString();
             return RedirectToAction("Paynow", "Payment");
+        }
+
+        public ActionResult ManageBooking()
+        {
+            int userID = Convert.ToInt32(Session["userId"].ToString());
+            BookingModel bookingModel = new BookingModel();
+            IEnumerable<BOOKING> userTransactions = bookingModel.BOOKINGs.Where(x => x.FK_UID == userID).ToList();
+            //IEnumerable<BOOKING> userTransactions;
+            string query = "SELECT * FROM ROOM";
+            IEnumerable<ROOM> roomList = bookingModel.Database.SqlQuery<ROOM>(query).ToList();
+
+            foreach(BOOKING booking in userTransactions)
+            {
+                foreach(ROOM room in roomList)
+                {
+                    if (booking.FK_RID == room.roomID)
+                    {
+                        booking.priceInCAD = room.priceInCAD;
+                    }
+                }
+                
+            }
+
+
+            ViewBag.UserTransactions = userTransactions;
+            ViewBag.userName = Session["userName"].ToString();
+
+            return View();
         }
     }
 }

@@ -61,5 +61,8 @@ namespace HotelReservationSystem.Models
         [Column(Order = 5)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int FK_RID { get; set; }
+
+        [NotMapped]
+        public int priceInCAD { get; set; }
     }
 }

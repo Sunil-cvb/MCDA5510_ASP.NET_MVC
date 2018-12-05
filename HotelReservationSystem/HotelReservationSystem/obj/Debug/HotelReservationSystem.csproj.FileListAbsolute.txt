@@ -357,7 +357,6 @@ C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReser
 C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.csproj.CopyComplete
 C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.dll
 C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.pdb
-C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.csprojAssemblyReference.cache
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\bin\ApplicationInsights.config
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\bin\HotelReservationSystem.dll.config
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\bin\HotelReservationSystem.dll
@@ -478,3 +477,4 @@ C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\ob
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.csproj.CopyComplete
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.dll
 C:\Test2\HotelReservationSystem\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.pdb
+C:\HotelReservationSystem\MCDA5510_ASP.NET_MVC\HotelReservationSystem\HotelReservationSystem\obj\Debug\HotelReservationSystem.csprojAssemblyReference.cache
