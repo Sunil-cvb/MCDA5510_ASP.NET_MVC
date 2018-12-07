@@ -60,5 +60,10 @@ namespace HotelReservationSystem.Models
         [Required(ErrorMessage = "This field is Required.")]
         [DisplayName("Country")]
         public string country { get; set; }
+
+        [Required(ErrorMessage = "This field is Required.")]
+        [DisplayName("Postal Code")]
+        [NotMapped]
+        public string postalCode { get; set; }
     }
 }

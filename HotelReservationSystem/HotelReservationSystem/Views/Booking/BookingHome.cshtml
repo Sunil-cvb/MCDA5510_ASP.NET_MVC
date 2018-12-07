@@ -22,14 +22,14 @@
                 @Html.LabelFor(model => model.fromDate, htmlAttributes: new { @class = "col-2 col-form-label" })
                 <div class="col-10">
                     @Html.EditorFor(model => model.fromDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                    @Html.ValidationMessageFor(model => model.fromDate, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.fromDate, (string)ViewBag.Message1, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-3">
                 @Html.LabelFor(model => model.toDate, htmlAttributes: new { @class = "col-2 col-form-label" })
                 <div class="col-10">
                     @Html.EditorFor(model => model.toDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                    @Html.ValidationMessageFor(model => model.toDate, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.toDate, (string)ViewBag.Message2, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-1">
@@ -87,27 +87,23 @@
     }
     else
     {
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Manage your booking</h2>
-                <p>
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Finger tip Services</h2>
-                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>We Care for you</h2>
-                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1 style="font-family: 'Neuton', serif;"; padding-top: 10px">Manage Bookings</h1>
+                        <p>
+                            Your satisfaction is our priority
+                        </p>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h1 style="font-family: 'Neuton', serif;"; padding-top: 10px">Royal Services</h1>
+                        <p>We Care for you</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 style="font-family: 'Neuton', serif;"; padding-top: 10px">Comfort at its best</h1>
+                        <p>Experience the serenity and royality at its best!</p>
+                    </div>
+                </div>
     }
 
 

@@ -19,9 +19,9 @@
         <textarea class="form-control" id="message" rows="5"></textarea>
     </div>
 
-<button class="btn btn-primary" id="btn" >Send</button>
-    </form>
 
+    </form>
+<button class="btn btn-primary" id="btn">Send</button>
 <div id="alert" style="padding:20px 10px;">
 
 </div>
@@ -29,7 +29,7 @@
 @section Scripts {
     <script>
         $("#btn").click(function () {
-            $("#alert").append("Your message has been sent");
+            $("#alert").html("Your message has been sent");
         });
     </script>
 }

@@ -26,8 +26,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Bookings", "BookingHome", "Booking")</li>
-                    <li>@Html.ActionLink("About", "About", "Booking")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Booking")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year Royal Palace Hotel</p>
         </footer>
     </div>
 

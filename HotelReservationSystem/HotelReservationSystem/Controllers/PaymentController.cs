@@ -80,12 +80,12 @@ namespace HotelReservationSystem.Controllers
             UserBankModel userBank = new UserBankModel();
             DateTime currentTime = DateTime.UtcNow;
             int userID = Convert.ToInt32(Session["userId"].ToString());
-            string query = "SELECT * FROM USERBANK WHERE FK_UID=@uid";
-            IEnumerable<USERBANK> results = userBank.Database.SqlQuery<USERBANK>(query, new SqlParameter("@uid",userID));
-            double userAmount = 0;
-            foreach (USERBANK userAcnt in results ){
-                userAmount = Convert.ToDouble(userAcnt.amount);
-            }
+            //string query = "SELECT * FROM USERBANK WHERE FK_UID=@uid";
+            //IEnumerable<USERBANK> results = userBank.Database.SqlQuery<USERBANK>(query, new SqlParameter("@uid",userID));
+            double userAmount = 1000;
+            //foreach (USERBANK userAcnt in results ){
+              //  userAmount = Convert.ToDouble(userAcnt.amount);
+            //}
             if (userAmount>=roomPrice) {
                 BookingModel bookingModel = new BookingModel();
                 BOOKING bookingDetails = new BOOKING();
@@ -98,19 +98,22 @@ namespace HotelReservationSystem.Controllers
                 bookingModel.SaveChanges();
                 ViewBag.PaymentStatus = "Success";
                 ViewBag.PaymentInfo = "Thank you for using our services. Enjoy your stay.";
+                ViewBag.userName = Session["userName"].ToString();
+                Session.Remove("toDate");
+                Session.Remove("fromDate");
+                Session.Remove("adults");
+                Session.Remove("children");
+                Session.Remove("roomId");
+                Session.Remove("roomPrice");
             }
             else
             {
                 ViewBag.PaymentStatus = "Failure";
                 ViewBag.PaymentInfo = "Insufficient Funds in your Account. PLease try later.";
+                ViewBag.userName = Session["userName"].ToString();
             }
             ViewBag.userName = Session["userName"].ToString();
-            Session.Remove("toDate");
-            Session.Remove("fromDate");
-            Session.Remove("adults");
-            Session.Remove("children");
-            Session.Remove("roomId");
-            Session.Remove("roomPrice");
+
             return View();
         }
 
@@ -128,7 +131,7 @@ namespace HotelReservationSystem.Controllers
             {
                 ViewBag.DeleteStatus = "Delete Failed";
             }
-            return View("Paynow");
+            return RedirectToAction("Paynow","Payment");
         }
 
         public ActionResult AddCard(FormCollection form)
@@ -147,7 +150,7 @@ namespace HotelReservationSystem.Controllers
                 ViewBag.CreateMsg = createMsg;
             
 
-            return View("Paynow","Payment");
+            return RedirectToAction("Paynow","Payment");
         }
     }
 }

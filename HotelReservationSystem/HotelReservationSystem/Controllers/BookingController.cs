@@ -21,6 +21,26 @@ namespace HotelReservationSystem.Controllers
             BOOKING booking = new BOOKING();
             return View(booking);
         }
+        public string IsValid(BOOKING booking)
+        {
+
+            DateTime checkinDate = (DateTime)booking.fromDate;
+            DateTime checkoutDate = (DateTime)booking.toDate;
+
+            int result = DateTime.Compare(checkinDate, checkoutDate);
+
+            if (checkinDate < DateTime.Now.Date)
+            {
+                return "validation1";
+            }
+
+            if ((DateTime)checkoutDate <= checkinDate)
+            {
+                return "validation2";
+            }
+
+            return "";
+        }
 
         public ActionResult SearchRooms(BOOKING bookingDetails)
         {
@@ -28,7 +48,21 @@ namespace HotelReservationSystem.Controllers
             Session["toDate"] = bookingDetails.toDate;
             Session["adults"] = bookingDetails.adults;
             Session["children"] = bookingDetails.children;
+            
+            string validationString = IsValid(bookingDetails);
+            if (!validationString.Equals(""))
+            {
+                if (validationString == "validation1")
+                {
+                    ViewBag.Message1 = "Check-in date must be greater than or equal to the current date.";
+                }
 
+                if (validationString == "validation2")
+                {
+                    ViewBag.Message2 = "Check-Out date must be greater than the check-in date.";
+                }
+                return View("BookingHome");
+            }
             BookingModel model = new BookingModel();
             string query = "SELECT * FROM ROOM WHERE roomId NOT IN (SELECT FK_RID FROM BOOKING WHERE fromDate =@fromDate AND toDate=@toDate)";
             IEnumerable<ROOM> roomList = model.Database.SqlQuery<ROOM>(query, new SqlParameter("@fromDate", bookingDetails.fromDate), new SqlParameter("@toDate", bookingDetails.toDate));
